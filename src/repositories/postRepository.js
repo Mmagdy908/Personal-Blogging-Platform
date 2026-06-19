@@ -1,4 +1,4 @@
-import Post from "../models/post.js";
+import Post from "../models/postModel.js";
 
 const postRepository = {
   create: async (postData) => {

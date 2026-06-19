@@ -1,6 +1,6 @@
-import { schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const postSchema = new schema(
+const postSchema = new Schema(
   {
     id: { type: String, required: true },
     title: { type: String, required: true, trim: true },
@@ -9,11 +9,11 @@ const postSchema = new schema(
   },
   { timestamps: true },
 );
-const Post = model("Post", postSchema);
-Post.pre("save", function (next) {
+postSchema.pre("save", function (next) {
   if (!this.id) {
     this.id = this._id.toString();
   }
   next();
 });
+const Post = model("Post", postSchema);
 export default Post;

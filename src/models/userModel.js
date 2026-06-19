@@ -1,6 +1,6 @@
-import { schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const userSchema = new schema(
+const userSchema = new Schema(
   {
     id: { type: String, required: true },
     name: { type: String, required: true, trim: true },
@@ -9,11 +9,13 @@ const userSchema = new schema(
   },
   { timestamps: true },
 );
-const User = model("User", userSchema);
-User.pre("save", function (next) {
+
+userSchema.pre("validate", function () {
+  console.log("Pre-validate hook triggered for user:", this);
   if (!this.id) {
     this.id = this._id.toString();
   }
-  next();
 });
+
+const User = model("User", userSchema);
 export default User;
