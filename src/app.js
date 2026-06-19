@@ -2,9 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
+import connectDB from "./config/dbConfig.js";
+
 const app = express();
 
 dotenv.config();
+
+connectDB();
+
 // body parser
 app.use(express.json());
 
