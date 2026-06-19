@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import bcrypt from "bcryptjs";
 
 const userSchema = new Schema(
   {
@@ -11,11 +12,21 @@ const userSchema = new Schema(
 );
 
 userSchema.pre("validate", function () {
-  console.log("Pre-validate hook triggered for user:", this);
   if (!this.id) {
     this.id = this._id.toString();
   }
 });
+
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
+
+  const salt = process.env.SALT || 12;
+  this.password = await bcrypt.hash(this.password, parseInt(salt));
+});
+
+userSchema.methods.checkPassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
 const User = model("User", userSchema);
 export default User;
