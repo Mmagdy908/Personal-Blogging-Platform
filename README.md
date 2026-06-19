@@ -4,7 +4,7 @@
 
 This is a robust RESTful API for a Personal Blogging Platform. It allows users to register, log in, and manage their own blog posts.
 
-**Live Deployment**: http://personal-blogging-platform-production-b288.up.railway.app
+**Live Deployment**: https://personal-blogging-platform-production-b288.up.railway.app
 
 ## Database Choice
 
