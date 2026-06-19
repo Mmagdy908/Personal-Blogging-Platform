@@ -12,7 +12,7 @@ const postController = {
       // 2) create new post
       const newPost = await postRepository.create({
         ...postData,
-        author: req.user.id,
+        author: req.userId,
       });
 
       res

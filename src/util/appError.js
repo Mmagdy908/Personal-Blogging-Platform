@@ -8,6 +8,7 @@ export class AppError extends Error {
 export const handleError = (err) => {
   let error = err;
 
+  // check mongoose validation error
   if (err.cause?.code === 11000) error = new AppError(400, err.message);
 
   return error;

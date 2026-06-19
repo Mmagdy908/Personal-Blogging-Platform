@@ -27,12 +27,12 @@ const authMiddleware = {
     const token = authHeader.split(" ")[1];
     try {
       // verify token and get authenticated user
-      const authenticatedUser = await asyncJwtVerify(
+      const { id: authenticatedUserId } = await asyncJwtVerify(
         token,
         process.env.JWT_SECRET,
       );
-
-      req.user = authenticatedUser;
+      // attach authenticated user id to request
+      req.userId = authenticatedUserId;
       next();
     } catch (error) {
       next(new AppError(401, "Unauthorized"));
@@ -40,11 +40,14 @@ const authMiddleware = {
   },
   isPostAuthor: async (req, res, next) => {
     const { id } = req.params;
+    // get the post by id
     const post = await postRepository.findById(id);
     if (!post) {
       return next(new AppError(404, "Post not found"));
     }
-    if (post.author.toString() !== req.user.id) {
+
+    // check post author
+    if (post.author.toString() !== req.userId) {
       return next(new AppError(403, "You are not the author of this post"));
     }
     next();
