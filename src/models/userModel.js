@@ -5,7 +5,12 @@ const userSchema = new Schema(
   {
     id: { type: String, required: true },
     name: { type: String, required: true, trim: true },
-    email: { type: String, required: true, unique: true, trim: true },
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: [true, "Email already exists"],
+    },
     password: { type: String, required: true, trim: true, minlength: 8 },
   },
   { timestamps: true },
