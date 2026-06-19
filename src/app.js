@@ -18,8 +18,8 @@ connectDB();
 // body parser
 app.use(express.json());
 
-app.use("/api/auth", authRouter);
-app.use("/api/posts", postRouter);
+app.use("/auth", authRouter);
+app.use("/posts", postRouter);
 
 app.use(globalErrorHandler);
 

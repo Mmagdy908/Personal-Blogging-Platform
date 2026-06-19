@@ -21,7 +21,7 @@ const authMiddleware = {
     const authHeader = req.headers.authorization;
     // check if the authorization header is provided
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      next(new AppError(401, "Unauthorized"));
+      return next(new AppError(401, "Unauthorized"));
     }
 
     const token = authHeader.split(" ")[1];
