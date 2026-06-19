@@ -1,4 +1,4 @@
-import JWT from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 import userRepository from "../repositories/userRepository.js";
 import {
@@ -36,7 +36,7 @@ const authController = {
       }
 
       // 4) generate token
-      const token = JWT.sign({ id: user.id }, process.env.JWT_SECRET, {
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: process.env.TOKEN_EXPIRES_IN || "7d",
       });
 
