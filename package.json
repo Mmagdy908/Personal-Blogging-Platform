@@ -1,0 +1,25 @@
+{
+  "name": "personal-blogging-platform",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Mmagdy908/Personal-Blogging-Platform#readme",
+  "bugs": {
+    "url": "https://github.com/Mmagdy908/Personal-Blogging-Platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mmagdy908/Personal-Blogging-Platform.git"
+  },
+  "license": "ISC",
+  "author": "Mohamed Magdy",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.1"
+  }
+}
