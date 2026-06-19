@@ -4,7 +4,7 @@ import userRepository from "../repositories/userRepository.js";
 import {
   validateRegisterInput,
   validateLoginInput,
-} from "../schemas/authSchema.js";
+} from "../validators/authSchema.js";
 
 const authController = {
   register: async (req, res, next) => {
