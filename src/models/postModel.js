@@ -9,11 +9,10 @@ const postSchema = new Schema(
   },
   { timestamps: true },
 );
-postSchema.pre("save", function (next) {
+postSchema.pre("validate", function () {
   if (!this.id) {
     this.id = this._id.toString();
   }
-  next();
 });
 const Post = model("Post", postSchema);
 export default Post;

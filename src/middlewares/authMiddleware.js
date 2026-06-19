@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-import { AppError } from "../utils/appError.js";
+import { AppError } from "../util/appError.js";
 
 const asyncJwtVerify = (token, secret) => {
   return new Promise((resolve, reject) => {
@@ -34,3 +34,5 @@ const authMiddleware = {
     }
   },
 };
+
+export default authMiddleware;
