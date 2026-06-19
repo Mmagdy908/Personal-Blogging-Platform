@@ -1,5 +1,4 @@
 import { schema, model } from "mongoose";
-import { ObjectId } from "mongodb";
 
 const postSchema = new schema(
   {
